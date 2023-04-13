@@ -1,0 +1,30 @@
+*{
+    font-family: 'Times New Roman', Times, serif
+}
+body{
+    margin:auto;
+    max-width: 1000px;
+    min-width: 800px;
+}
+.main-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.asset-input-container{
+  width: 50%; /* Set the width of the div */
+  margin-top:5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-button{
+    margin-left: 10%;
+    margin-right: 3%;
+}
+.auth-buttons-container{
+    margin-left: 3%;
+    margin-right: 5%;
+}

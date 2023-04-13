@@ -9,6 +9,35 @@
     <script  src='main.js' defer></script>
 </head>
 <body>
-    
+    <div class="main-header">
+        <button class="info-button">Info</button>
+        <p style="display: inline;"> Hello </p>
+        <div class="auth-buttons-container">
+          <button >Log out</button>
+          <button >Sign in</button>
+          <button >Sign up</button>
+        </div>
+    </div>
+   <div class="asset-input-container">
+         <div>
+            <p style="text-align: center;">Token Name</p>
+            <form>
+                <input list="assetName">
+                <datalist id="assetName">
+
+                </datalist>
+            </form>
+        </div>
+        <div>
+            <p style="text-align: center;">Amount of Asset</p>
+            <input type="number" step="1e-12" min="0.00">
+        </div>
+        <div style="margin-top: auto;margin-bottom: 0;">
+            <button >Add</button>
+        </div>
+
+   </div>
+
+
 </body>
 </html>
