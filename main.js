@@ -1,28 +1,30 @@
 import model from "./model.js";
 
 const modalSignIn = document.getElementById("signInModal");
-
+const modalSignInExitmark = document.getElementById("signInModalExitMark");
 const buttonSignIn = document.getElementById("buttonSignIn");
 
+initModalSignIn();
 
+function initModalSignIn(){
+  buttonSignIn.addEventListener("click", (event) => {
+    modalSignIn.style.display = "block";
+  });
+  modalSignIn.addEventListener("click", (event) => {
+    if (event.target.id === modalSignIn.id) {
+      modalSignIn.style.display = "none";
+    }
+  });
+  modalSignInExitmark.addEventListener("click", (event) => {
+    modalSignIn.style.display = "none";
+  });
+  window.addEventListener('keydown',event=>{
+    if(event.key ==='Escape'){
+      modalSignIn.style.display = "none";
+    }
+  })
+}
 
-
-buttonSignIn.addEventListener("click", (event) => {
-  modal.style.display = "block";
-});
-
-modal.addEventListener("click", (event) => {
-  if(event.target.id === modal.id)
-  {
-    modal.style.display = "none";
-  }
-});
-
-overlay.addEventListener("click", (event) => {
-  modal.style.display = "none";
-  overlay.style.display = "none";
-  console.log("lol");
-});
 
 const assetNameList = document.getElementById("assetName");
 fetch("https://api.llama.fi/protocols", {
@@ -40,3 +42,4 @@ fetch("https://api.llama.fi/protocols", {
     });
     console.log("finish");
   });
+
