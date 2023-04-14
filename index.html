@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crypto Assets</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script  src='main.js' defer></script>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
     <div class="main-header">
-        <button class="info-button">Info</button>
-        <p style="display: inline;"> Hello </p>
-        <div class="auth-buttons-container">
-          <button >Log out</button>
-          <button id="buttonSignIn" >Sign in</button>
-          <button >Sign up</button>
-        </div>
+      <button class="info-button black-style-for-buttons">Info</button>
+      <p class="black-style-for-paragraphs">Hello</p>
+      <div class="auth-buttons-container">
+        <button class="black-style-for-buttons">Log out</button>
+        <button class="black-style-for-buttons" id="buttonSignIn">Sign in</button>
+        <button class="black-style-for-buttons">Sign up</button>
+      </div>
     </div>
-    <hr>
-   <div class="asset-input-container">
-        <div class="container-action-buttons">
-            <button class="action">ADD</button>
-            <button class="action">EDIT</button>
-            <button class="action">REMOVE</button>
-        </div>
-         <div class="input-data">
-            <p style="text-align: center; margin-top: auto;margin-bottom: 0;">Token Name</p>
-            <form>
-                <input list="assetName" style="margin-left: 0;margin-right: 0;">
-                <datalist id="assetName">
+    <hr />
+    <div class="asset-input-container">
+      <div class="container-action-buttons">
+        <button class="action black-style-for-buttons">ADD</button>
+        <button class="action black-style-for-buttons">EDIT</button>
+        <button class="action black-style-for-buttons">REMOVE</button>
+      </div>
+      <div class="input-data">
+        <p class="black-style-for-paragraphs input-data-label">Token Name</p>
+        <form>
+          <input class="input-data-field" list="assetName" />
+          <datalist id="assetName"> </datalist>
+        </form>
+      </div>
+      <div class="input-data">
+        <p class="input-data-label black-style-for-paragraphs">quantity</p>
+        <form>
+          <input
+            type="number"
+            step="1e-12"
+            min="0.00"
+            class="input-data-field"
+          />
+        </form>
+      </div>
+      <div class="action-button-layout">
+        <button class="black-style-for-buttons">Add</button>
+      </div>
+    </div>
+    <hr />
+    <div>
+      <ul>
+        <li>lol</li>
+      </ul>
+    </div>
 
-                </datalist>
-            </form>
-        </div>
-        <div class="input-data">
-            <p style="text-align: center; margin-top: auto;margin-bottom: 0;">quantity</p>
-            <form>
-              <input type="number" step="1e-12" min="0.00" style="margin-left: 0;margin-right: 0;" >
-            </form>
-        </div>
-        <div style="margin-top: auto;margin-bottom: 0;">
-            <button >Add</button>
-        </div>
-   </div>
-   <hr>
-   <div>
-        <ul>
-            <li>lol</li>
-        </ul>
-   </div>
-
-
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p id="exemple">Modal content goes here...</p>
-    <p>LOLek</p>
-  </div>
-</div>
-
-
-</body>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="exemple">Modal content goes here...</p>
+        <p>LOLek</p>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,7 +1,7 @@
 const modal = document.getElementById("myModal");
 const overlay = document.querySelector(".modal");
 const buttonSignIn = document.getElementById("buttonSignIn");
-const exemple = document.getElementById("exemple");
+
 console.log(buttonSignIn);
 
 buttonSignIn.addEventListener("click", (event) => {
