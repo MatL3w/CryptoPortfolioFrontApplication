@@ -79,6 +79,20 @@ button.action{
 
 
 
+
+.overlay {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+
 .modal {
   display: none; /* Hide the modal by default */
   position: fixed; /* Position it on top of the page content */
@@ -89,6 +103,7 @@ button.action{
   height: 100%;
   overflow: auto; /* Enable scrolling if the content exceeds the viewport */
   background-color: rgba(0,0,0,0.4); /* Add a semi-transparent background */
+  z-index: 6;
 }
 
 .modal-content {
