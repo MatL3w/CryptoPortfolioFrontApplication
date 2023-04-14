@@ -1,19 +1,25 @@
-const modal = document.getElementById("myModal");
-const overlay = document.querySelector(".modal");
+import model from "./model.js";
+
+const modalSignIn = document.getElementById("signInModal");
+
 const buttonSignIn = document.getElementById("buttonSignIn");
 
-console.log(buttonSignIn);
+
+
 
 buttonSignIn.addEventListener("click", (event) => {
-  console.log('lol');
-  console.log(modal.style.display);
-  modal.style.display ="block";
-  overlay.style.display = "block";
-
+  modal.style.display = "block";
 });
 
-overlay.addEventListener('click',(event)=>{
-  modal.style.display = 'none';
+modal.addEventListener("click", (event) => {
+  if(event.target.id === modal.id)
+  {
+    modal.style.display = "none";
+  }
+});
+
+overlay.addEventListener("click", (event) => {
+  modal.style.display = "none";
   overlay.style.display = "none";
   console.log("lol");
 });
