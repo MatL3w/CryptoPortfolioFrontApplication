@@ -14,30 +14,50 @@
         <p style="display: inline;"> Hello </p>
         <div class="auth-buttons-container">
           <button >Log out</button>
-          <button >Sign in</button>
+          <button id="buttonSignIn" >Sign in</button>
           <button >Sign up</button>
         </div>
     </div>
+    <hr>
    <div class="asset-input-container">
-         <div>
-            <p style="text-align: center;">Token Name</p>
+        <div class="container-action-buttons">
+            <button class="action">ADD</button>
+            <button class="action">EDIT</button>
+            <button class="action">REMOVE</button>
+        </div>
+         <div class="input-data">
+            <p style="text-align: center; margin-top: auto;margin-bottom: 0;">Token Name</p>
             <form>
-                <input list="assetName">
+                <input list="assetName" style="margin-left: 0;margin-right: 0;">
                 <datalist id="assetName">
 
                 </datalist>
             </form>
         </div>
-        <div>
-            <p style="text-align: center;">Amount of Asset</p>
-            <input type="number" step="1e-12" min="0.00">
+        <div class="input-data">
+            <p style="text-align: center; margin-top: auto;margin-bottom: 0;">quantity</p>
+            <form>
+              <input type="number" step="1e-12" min="0.00" style="margin-left: 0;margin-right: 0;" >
+            </form>
         </div>
         <div style="margin-top: auto;margin-bottom: 0;">
             <button >Add</button>
         </div>
-
+   </div>
+   <hr>
+   <div>
+        <ul>
+            <li>lol</li>
+        </ul>
    </div>
 
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Modal content goes here...</p>
+  </div>
+</div>
 
 </body>
 </html>
