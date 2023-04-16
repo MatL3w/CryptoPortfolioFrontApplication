@@ -2,6 +2,10 @@ import model from "./model.js";
 
 const modalSignIn = document.getElementById("signInModal");
 const modalSignInExitmark = document.getElementById("signInModalExitMark");
+const modalSignInInputUserName = document.getElementById("signInInputUserName");
+const modalSignInInputPassword = document.getElementById("signInInputPassword");
+const modalSignInInputEmail = document.getElementById("signInInputEmail");
+const modalSignInButtonSubmit = document.getElementById("signInButtonSumbit");
 const buttonSignIn = document.getElementById("buttonSignIn");
 
 initModalSignIn();
@@ -22,7 +26,24 @@ function initModalSignIn(){
     if(event.key ==='Escape'){
       modalSignIn.style.display = "none";
     }
-  })
+  });
+  modalSignInButtonSubmit.addEventListener('click',event=>{
+    fetch("http://localhost:3000/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body:JSON.stringify({
+        email:modalSignInInputEmail.value,
+        password:modalSignInInputPassword.value,
+        name:modalSignInInputUserName.value
+      }),
+    })
+      .then((result) => result.json())
+      .then((data) => {
+        console.log(data);
+      });
+  });
 }
 
 
