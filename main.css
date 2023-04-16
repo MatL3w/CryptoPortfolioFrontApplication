@@ -130,3 +130,7 @@ button{
 .modal-button-submit{
   margin-top: 2%;
 }
+
+button:hover{
+  background-color:#888;
+}
