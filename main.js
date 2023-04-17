@@ -1,4 +1,5 @@
 import model from "./model.js";
+import view from './view.js';
 
 const modalSignIn = document.getElementById("signInModal");
 const modalSignInExitmark = document.getElementById("signInModalExitMark");
@@ -41,11 +42,14 @@ function initModalSignIn(){
     })
       .then((result) => result.json())
       .then((data) => {
-        console.log(data);
+        view.showNotyfication(data);
       });
   });
 }
-
+const obj = {
+  lo:'asd',
+}
+view.showNotyfication(obj);
 
 const assetNameList = document.getElementById("assetName");
 fetch("https://api.llama.fi/protocols", {
