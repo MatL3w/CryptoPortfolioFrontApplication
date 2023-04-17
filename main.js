@@ -79,21 +79,19 @@ function initModalSignIn(){
   });
   modalSignInButtonSubmit.addEventListener("click",async (event) => {
     try{
-         const requestResult = await model.requestSignIn(
-           modalSignInInputEmail.value,
-           modalSignInInputPassword.value
-         );
-         console.log("lol1");
-         console.log(requestResult);
-         if (requestResult) {
-           view.setHelloToUser(model.name);
-           console.log("lol2");
-         }
-
-    }catch{
-
+      const requestResult = await model.sendRequestSignIn(modalSignInInputEmail.value,modalSignInInputPassword.value);
+        if (requestResult===true) {
+            view.setHelloToUser(model.name);
+            view.hideSignInButton();
+            view.hideSignUpButton();
+            view.showLogoutButton();
+            view.hideModalSignIn();
+            view.showNotyfication(`User: ${model.name} succesfully sign in.`);
+        };
     }
-
+    catch(error){
+      view.showNotyfication("Problem with Sign In.");
+    }
   });
 }
 function initLogOut(){
@@ -101,20 +99,8 @@ function initLogOut(){
 }
 
 
+
+
 const assetNameList = document.getElementById("assetName");
-fetch("https://api.llama.fi/protocols", {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json",
-  },
-})
-  .then((result) => result.json())
-  .then((data) => {
-    data.find((ele) => {
-      const assetName = document.createElement("option");
-      assetName.setAttribute("value", ele.name);
-      assetNameList.appendChild(assetName);
-    });
-    console.log("finish");
-  });
+
 

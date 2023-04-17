@@ -22,8 +22,9 @@ class Model {
   get name() {
     return this.#name;
   }
- async requestSignIn(email,password){
-        fetch("http://localhost:3000/signin", {
+ async sendRequestSignIn(email,password){
+  try {
+    await fetch("http://localhost:3000/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,8 +40,12 @@ class Model {
         this.name = data.userName;
         console.log(this.token);
         console.log(this.name);
-        return true;
       });
+  } catch (error) {
+    throw error;
+    return false;
+  }
+  return true;
   }
 }
 
