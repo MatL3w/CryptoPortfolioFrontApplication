@@ -15,7 +15,7 @@
       <div class="auth-buttons-container">
         <button class="black-style-for-buttons">Log out</button>
         <button class="black-style-for-buttons" id="buttonSignIn">Sign in</button>
-        <button class="black-style-for-buttons">Sign up</button>
+        <button class="black-style-for-buttons" id="buttonSignUp">Sign up</button>
       </div>
     </div>
     <hr />
@@ -28,7 +28,7 @@
       <div class="input-data">
         <p class="black-style-for-paragraphs input-data-label">Token Name</p>
         <form>
-          <input class="input-data-field" list="assetName" />
+          <input  class="input-data-field" list="assetName" />
           <datalist id="assetName"> </datalist>
         </form>
       </div>
@@ -66,6 +66,19 @@
         <button id="signInButtonSumbit" class="black-style-for-buttons modal-button-submit">Submit</button>
       </div>
     </div>
+
+    <div id="signUpModal" class="modal">
+      <div class="modal-content">
+        <span id="signUpModalExitMark" class="close modal-element">&times;</span>
+        <p class="modal-element">Email</p>
+        <input id="signUpInputEmail" type="text">
+        <p>Password</p>
+        <input id="signUpInputPassword" type="password">
+        <button id="signUpButtonSumbit" class="black-style-for-buttons modal-button-submit">Submit</button>
+      </div>
+    </div>
+
+
     <div id="notificationsContainer"class="container-notifications">
     </div>
 

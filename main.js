@@ -9,7 +9,16 @@ const modalSignInInputEmail = document.getElementById("signInInputEmail");
 const modalSignInButtonSubmit = document.getElementById("signInButtonSumbit");
 const buttonSignIn = document.getElementById("buttonSignIn");
 
+const modalSignUp = document.getElementById("signUpModal");
+const modalSignUpExitmark = document.getElementById("signUpModalExitMark");
+const modalSignUpInputPassword = document.getElementById("signUpInputPassword");
+const modalSignUpInputEmail = document.getElementById("signUpInputEmail");
+const modalSignUpButtonSubmit = document.getElementById("signUpButtonSumbit");
+const buttonSignUp = document.getElementById("buttonSignUp");
+
+
 initModalSignIn();
+initModalSignUp();
 
 function initModalSignIn(){
   buttonSignIn.addEventListener("click", (event) => {
@@ -46,10 +55,46 @@ function initModalSignIn(){
       });
   });
 }
-const obj = {
-  lo:'asd',
+function initModalSignUp(){
+  buttonSignUp.addEventListener("click", (event) => {
+    modalSignUp.style.display = "block";
+  });
+  modalSignUp.addEventListener("click", (event) => {
+    if (event.target.id === modalSignUp.id) {
+      modalSignUp.style.display = "none";
+    }
+  });
+  modalSignUpExitmark.addEventListener("click", (event) => {
+    modalSignUp.style.display = "none";
+  });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      modalSignUp.style.display = "none";
+    }
+  });
+  modalSignUpButtonSubmit.addEventListener("click",event=>{
+    fetch("http://localhost:3000/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: modalSignUpInputEmail.value,
+        password: modalSignUpInputPassword.value,
+      }),
+    })
+      .then((result) => result.json())
+      .then((data) => {
+        modalSignUpInputEmail.value= '';
+        modalSignUpInputPassword.value ='',
+        modalSignUp.style.display='none';
+        model.token = data.token;
+        view.showNotyfication(data.userId);
+        console.log(model.token);
+      });
+  })
 }
-view.showNotyfication(obj);
+
 
 const assetNameList = document.getElementById("assetName");
 fetch("https://api.llama.fi/protocols", {
