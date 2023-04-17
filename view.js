@@ -2,9 +2,11 @@
 class View{
 
     #notyficationsContainer;
+    #paragraphHello;
 
     constructor(){
         this.#notyficationsContainer = document.getElementById("notificationsContainer");
+        this.#paragraphHello = document.getElementById("paragraphHello");
     }
 
     showNotyfication(message){
@@ -26,6 +28,12 @@ class View{
                 this.#notyficationsContainer.style.display ="none";
             }
         },100)
+    }
+    setHelloToUser(user){
+        this.#paragraphHello.textContent=`Hello ${user}!`;
+    }
+    ressetHello(){
+        this.#paragraphHello.textContent = `Hello user!`;
     }
 }
 

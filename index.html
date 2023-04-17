@@ -7,13 +7,14 @@
     <title>Crypto Assets</title>
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script type="module" src="main.js" defer></script>
+    
   </head>
   <body>
     <div class="main-header">
       <button class="info-button black-style-for-buttons">Info</button>
-      <p class="black-style-for-paragraphs">Hello User!</p>
+      <p id="paragraphHello" class="black-style-for-paragraphs">Hello User!</p>
       <div class="auth-buttons-container">
-        <button class="black-style-for-buttons">Log out</button>
+        <button class="black-style-for-buttons" id="buttonLogOut">Log out</button>
         <button class="black-style-for-buttons" id="buttonSignIn">Sign in</button>
         <button class="black-style-for-buttons" id="buttonSignUp">Sign up</button>
       </div>
@@ -57,8 +58,6 @@
     <div id="signInModal" class="modal">
       <div class="modal-content">
         <span id="signInModalExitMark" class="close modal-element">&times;</span>
-        <p class="modal-element">UserName</p>
-        <input id="signInInputUserName" type="text">
         <p class="modal-element">Email</p>
         <input id="signInInputEmail" type="text">
         <p>Password</p>
@@ -70,6 +69,8 @@
     <div id="signUpModal" class="modal">
       <div class="modal-content">
         <span id="signUpModalExitMark" class="close modal-element">&times;</span>
+        <p class="modal-element">UserName</p>
+        <input id="signUpInputUserName" type="text">
         <p class="modal-element">Email</p>
         <input id="signUpInputEmail" type="text">
         <p>Password</p>

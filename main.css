@@ -119,10 +119,11 @@ button{
   margin-bottom: 0;
 }
 #signInModalExitMark{
-  /* position: relative;
-  top: 0px;
-  right: -130px; */
-  /* align-self: flex-start; */
+  float: right;
+  margin-right: 0;
+  margin-left: auto;
+}
+#signUpModalExitMark{
   float: right;
   margin-right: 0;
   margin-left: auto;
