@@ -119,7 +119,7 @@ class View {
     this.clearAssetsTable()
 
     for (let i = 0; i < assets.length; i++) {
-      let row = this.#assetsTable.insertRow();
+      let row = document.createElement("tr");
 
       let tdImg = document.createElement("td");
       let img = document.createElement("img");
@@ -147,7 +147,8 @@ class View {
       tdTotalValue.textContent = assets[i].totalValue;
       row.appendChild(tdTotalValue);
 
-      this.#assetsTable.appendChild(row);
+      this.#assetsTable.children[0].appendChild(row);
+      //this.#assetsTable.children(0).appendChild(row);
     }
     
     
@@ -155,8 +156,11 @@ class View {
     return this;
   }
   clearAssetsTable(){
-    for (let i = 0; i <= this.#assetsTable.children.length; i++) {
+
+    const iteration =this.#assetsTable.children[0].children.length;
+    for (let i = 0; i < iteration-1 ; i++) {
       this.#assetsTable.deleteRow(-1);
+      console.log('lol');
     }
     return this;
   }
