@@ -1,6 +1,7 @@
 class Model {
   #token;
   #name;
+  #assets=[];
 
   constructor() {
     this.#token = localStorage.getItem("token");
@@ -9,7 +10,7 @@ class Model {
 
   set token(value) {
     this.#token = value;
-    //console.log
+    localStorage.setItem('token',value);
   }
   get token() {
     return this.#token;
@@ -17,7 +18,7 @@ class Model {
 
   set name(value) {
     this.#name = value;
-    //console.log
+    localStorage.setItem("name", value);
   }
   get name() {
     return this.#name;
@@ -46,7 +47,48 @@ class Model {
     return false;
   }
   return true;
+  };
+  async sendRequestLogOut(){
+  try {
+    const headers = new Headers();
+    headers.append("Authorization", this.#token);
+    headers.append("Content-Type", "application/json");
+    await fetch("http://localhost:3000/logout", {
+      method: "POST",
+      headers: headers
+    })
+      .then((result) => result.json())
+      .then((data) => {
+        this.token = '';
+        this.name = '';
+      });
+  } catch (error) {
+    throw error;
+    return false;
   }
+  return true;
+  };
+  async sendRequestGetAssets(){
+      try {
+        const headers = new Headers();
+        headers.append("Authorization", this.#token);
+        headers.append("Content-Type", "application/json");
+        await fetch("http://localhost:3000/getassets", {
+          method: "GET",
+          headers: headers,
+        })
+          .then((result) => result.json())
+          .then((data) => {
+            this.#assets = data.assets;
+            console.log(this.#assets);
+          });
+      } catch (error) {
+        throw error;
+        return false;
+      }
+      return true;
+  }
+  
 }
 
 export default new Model();

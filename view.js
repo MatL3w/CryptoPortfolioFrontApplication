@@ -21,7 +21,7 @@ class View {
     this.#modalSignIn = document.getElementById("signInModal");
   }
 
-  #getAssetNameforList(){
+  #getAssetNameforList() {
     fetch("https://api.llama.fi/protocols", {
       method: "GET",
       headers: {
@@ -56,29 +56,63 @@ class View {
         this.#notyficationsContainer.style.display = "none";
       }
     }, 100);
+    return this;
   }
 
   setHelloToUser(user) {
     this.#paragraphHello.textContent = `Hello ${user}!`;
+    return this;
   }
   ressetHello() {
     this.#paragraphHello.textContent = `Hello user!`;
+    return this;
   }
   hideSignInButton() {
     this.#buttonSignIn.style.display = "none";
+    return this;
   }
+  showSignInButton() {
+    this.#buttonSignIn.style.display = "inline-block";
+    return this;
+  }
+
   hideSignUpButton() {
     this.#buttonSignUp.style.display = "none";
+    return this;
+  }
+  showSignUpButton() {
+    this.#buttonSignUp.style.display = "inline-block";
+    return this;
   }
   hideLogoutButton() {
     this.#buttonLogOut.style.display = "none";
+    return this;
   }
   showLogoutButton() {
-    this.#buttonLogOut.style.display = "block";
+    this.#buttonLogOut.style.display = "inline-block";
+    return this;
   }
-  hideModalSignIn(){
+  hideModalSignIn() {
     this.#modalSignIn.style.display = "none";
+    return this;
   }
+  signInAllViewActivities(name) {
+    this.setHelloToUser(name)
+      .hideSignInButton()
+      .hideSignUpButton()
+      .showLogoutButton()
+      .hideModalSignIn()
+      .showNotyfication(`User: ${name} succesfully sign in.`);
+  }
+  logOutAllActivities() {
+    this.ressetHello()
+    .showSignInButton()
+    .showSignUpButton()
+    .hideLogoutButton()
+    .showNotyfication(`User Logout!`);
+    return this;
+  }
+  
 }
 
 export default new View();

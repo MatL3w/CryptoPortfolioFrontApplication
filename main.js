@@ -24,7 +24,11 @@ const buttonLogOut = document.getElementById('buttonLogOut');
 initModalSignIn();
 initModalSignUp();
 initLogOut();
+initActivities();
 
+async function initActivities() {
+  //await logInAllActivities();
+}
 function initModalSignUp(){
   buttonSignUp.addEventListener("click", (event) => {
     modalSignUp.style.display = "block";
@@ -78,26 +82,39 @@ function initModalSignIn(){
     }
   });
   modalSignInButtonSubmit.addEventListener("click",async (event) => {
-    try{
-      const requestResult = await model.sendRequestSignIn(modalSignInInputEmail.value,modalSignInInputPassword.value);
-        if (requestResult===true) {
-            view.setHelloToUser(model.name);
-            view.hideSignInButton();
-            view.hideSignUpButton();
-            view.showLogoutButton();
-            view.hideModalSignIn();
-            view.showNotyfication(`User: ${model.name} succesfully sign in.`);
-        };
-    }
-    catch(error){
-      view.showNotyfication("Problem with Sign In.");
-    }
+    await logInAllActivities();
   });
 }
 function initLogOut(){
   buttonLogOut.style.display="none";
+  buttonLogOut.addEventListener('click',async event=>{
+    await logOutAllActivities();
+  })
 }
-
+async function logInAllActivities(){
+  try{
+      let requestResult = await model.sendRequestSignIn(modalSignInInputEmail.value,modalSignInInputPassword.value);
+        if (requestResult===true) {
+          view.signInAllViewActivities(model.name);
+          requestResult = await model.sendRequestGetAssets();
+        };
+    }
+    catch(error){
+      console.log(error);
+      view.showNotyfication("Problem with Sign In.");
+    }
+}
+async function logOutAllActivities(){
+    try {
+      const requestResult = await model.sendRequestLogOut();
+      if (requestResult === true) {
+        view.logOutAllActivities();
+      }
+    } catch (error) {
+      console.log(error);
+      view.showNotyfication("Problem with Logout.");
+    }
+}
 
 
 
