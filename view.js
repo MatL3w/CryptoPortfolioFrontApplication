@@ -8,6 +8,7 @@ class View {
   #assetNameList;
   #modalSignIn;
   #assetsTable;
+  #paragraphTotalValue;
 
   constructor() {
     this.#notyficationsContainer = document.getElementById(
@@ -21,6 +22,7 @@ class View {
     this.#getAssetNameforList();
     this.#modalSignIn = document.getElementById("signInModal");
     this.#assetsTable = document.getElementById("assetsTable");
+    this.#paragraphTotalValue = document.getElementById("paragraphTotalValue");
   }
 
   #getAssetNameforList() {
@@ -54,7 +56,7 @@ class View {
         this.#notyficationsContainer.removeChild(paragraph);
         clearInterval(intervalId);
       }
-      if (paragraph.style.opacity == 0) {
+      if (paragraph.style.opacity == 0 && this.#notyficationsContainer.children.length == 0) {
         this.#notyficationsContainer.style.display = "none";
       }
     }, 100);
@@ -98,13 +100,14 @@ class View {
     this.#modalSignIn.style.display = "none";
     return this;
   }
-  signInAllViewActivities(name) {
-    this.setHelloToUser(name)
+  signInAllViewActivities(model) {
+    this.setHelloToUser(model.name)
       .hideSignInButton()
       .hideSignUpButton()
       .showLogoutButton()
       .hideModalSignIn()
-      .showNotyfication(`User: ${name} succesfully sign in.`);
+      .showNotyfication(`User: ${model.name} succesfully sign in.`)
+      .setTotalValueParagraph(model.totalValueofAssets);
   }
   logOutAllActivities() {
     this.ressetHello()
@@ -112,7 +115,8 @@ class View {
       .showSignUpButton()
       .hideLogoutButton()
       .showNotyfication(`User Logout!`)
-      .clearAssetsTable();
+      .clearAssetsTable()
+      .clearTotalValueParagraph();
     return this;
   }
   showAssets(assets) {
@@ -144,7 +148,7 @@ class View {
       row.appendChild(tdQuantity);
 
       let tdTotalValue = document.createElement("td");
-      tdTotalValue.textContent = assets[i].totalValue;
+      tdTotalValue.textContent =  assets[i].totalValue.toFixed(2);
       row.appendChild(tdTotalValue);
 
       this.#assetsTable.children[0].appendChild(row);
@@ -156,12 +160,18 @@ class View {
     return this;
   }
   clearAssetsTable(){
-
     const iteration =this.#assetsTable.children[0].children.length;
     for (let i = 0; i < iteration-1 ; i++) {
       this.#assetsTable.deleteRow(-1);
-      console.log('lol');
     }
+    return this;
+  }
+  setTotalValueParagraph(value){
+    this.#paragraphTotalValue.textContent= `total value: ${value.toFixed(2)} $`;
+    return this;
+  }
+  clearTotalValueParagraph(){
+    this.#paragraphTotalValue.textContent = `total value:`;
     return this;
   }
 }

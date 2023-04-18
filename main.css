@@ -179,3 +179,8 @@ td {
   text-align: center;
   background-color: #aaa;
 }
+#paragraphTotalValue{
+  display: inline-block;
+  margin-left: 0;
+  margin-right:auto; 
+}

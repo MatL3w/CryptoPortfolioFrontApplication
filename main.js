@@ -89,14 +89,15 @@ function initLogOut(){
   buttonLogOut.style.display="none";
   buttonLogOut.addEventListener('click',async event=>{
     await logOutAllActivities();
+    model.clearDataAfterUserLogOut();
   })
 }
 async function logInAllActivities(){
   try{
       let requestResult = await model.sendRequestSignIn(modalSignInInputEmail.value,modalSignInInputPassword.value);
         if (requestResult===true) {
-          view.signInAllViewActivities(model.name);
           requestResult = await model.sendRequestGetAssets();
+          view.signInAllViewActivities(model);
           view.showAssets(model.assets);
         };
     }
