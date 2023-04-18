@@ -97,6 +97,7 @@ async function logInAllActivities(){
         if (requestResult===true) {
           view.signInAllViewActivities(model.name);
           requestResult = await model.sendRequestGetAssets();
+          view.showAssets(model.assets);
         };
     }
     catch(error){

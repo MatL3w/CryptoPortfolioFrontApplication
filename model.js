@@ -23,6 +23,9 @@ class Model {
   get name() {
     return this.#name;
   }
+  get assets(){
+    return this.#assets;
+  }
  async sendRequestSignIn(email,password){
   try {
     await fetch("http://localhost:3000/signin", {

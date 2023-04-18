@@ -7,6 +7,7 @@ class View {
   #buttonLogOut;
   #assetNameList;
   #modalSignIn;
+  #assetsTable;
 
   constructor() {
     this.#notyficationsContainer = document.getElementById(
@@ -19,6 +20,7 @@ class View {
     this.#assetNameList = document.getElementById("assetName");
     this.#getAssetNameforList();
     this.#modalSignIn = document.getElementById("signInModal");
+    this.#assetsTable = document.getElementById("assetsTable");
   }
 
   #getAssetNameforList() {
@@ -106,13 +108,58 @@ class View {
   }
   logOutAllActivities() {
     this.ressetHello()
-    .showSignInButton()
-    .showSignUpButton()
-    .hideLogoutButton()
-    .showNotyfication(`User Logout!`);
+      .showSignInButton()
+      .showSignUpButton()
+      .hideLogoutButton()
+      .showNotyfication(`User Logout!`)
+      .clearAssetsTable();
     return this;
   }
-  
+  showAssets(assets) {
+    this.clearAssetsTable()
+
+    for (let i = 0; i < assets.length; i++) {
+      let row = this.#assetsTable.insertRow();
+
+      let tdImg = document.createElement("td");
+      let img = document.createElement("img");
+      img.src = assets[i].logo;
+      tdImg.appendChild(img);
+      row.appendChild(tdImg);
+
+      let tdName = document.createElement("td");
+      tdName.textContent = assets[i].name;
+      row.appendChild(tdName);
+
+      let tdSymbol = document.createElement("td");
+      tdSymbol.textContent = assets[i].symbol;
+      row.appendChild(tdSymbol);
+
+      let tdPrice = document.createElement("td");
+      tdPrice.textContent = assets[i].price;
+      row.appendChild(tdPrice);
+
+      let tdQuantity = document.createElement("td");
+      tdQuantity.textContent = assets[i].quantity;
+      row.appendChild(tdQuantity);
+
+      let tdTotalValue = document.createElement("td");
+      tdTotalValue.textContent = assets[i].totalValue;
+      row.appendChild(tdTotalValue);
+
+      this.#assetsTable.appendChild(row);
+    }
+    
+    
+
+    return this;
+  }
+  clearAssetsTable(){
+    for (let i = 0; i <= this.#assetsTable.children.length; i++) {
+      this.#assetsTable.deleteRow(-1);
+    }
+    return this;
+  }
 }
 
 export default new View();
