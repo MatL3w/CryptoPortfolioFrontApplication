@@ -76,7 +76,7 @@ class Model {
         const headers = new Headers();
         headers.append("Authorization", this.#token);
         headers.append("Content-Type", "application/json");
-        await fetch("http://localhost:3000/getassets", {
+        await fetch("http://localhost:3000/asset", {
           method: "GET",
           headers: headers,
         })
