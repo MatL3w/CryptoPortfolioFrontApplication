@@ -120,6 +120,7 @@ async function logOutAllActivities(){
 
 
 
+
 const assetNameList = document.getElementById("assetName");
 
 
